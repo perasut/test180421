@@ -1,4 +1,7 @@
+import 'package:cabbittest/screens/bottomnav/booking_screen.dart';
 import 'package:cabbittest/screens/bottomnav/home_screen.dart';
+import 'package:cabbittest/screens/bottomnav/market_screen.dart';
+import 'package:cabbittest/screens/bottomnav/setting_screen.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -10,13 +13,23 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  int _currentIndex = 0;
+  String _title = 'บริการ';
+
+  final List<Widget> _children = [
+    HomeScreen(),
+    MarketScreen(),
+    BooklingScreen(),
+    SettingScreen(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Title1234'),
       ),
-      body: HomeScreen(),
+      body: _children[_currentIndex],
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.white,
         color: Colors.teal,
